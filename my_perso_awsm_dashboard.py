@@ -20,7 +20,7 @@ import requests
 import acquire
 import prep
 from datetime import datetime
-import altair as alt
+# import altair as alt
 
 # Streamlit initial configuration and appearance
 st.set_page_config(layout='wide')
