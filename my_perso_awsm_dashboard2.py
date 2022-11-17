@@ -29,7 +29,7 @@ from datetime import datetime
 st.set_page_config(layout='wide')
 
 with open('style2.css') as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    st.markdown(f"<style>'text-align: center;{f.read()}'</style>", unsafe_allow_html=True)
 
 #Data
 transactions = pd.read_csv('transactions.csv')
@@ -51,11 +51,18 @@ with header:
 ttm, current_month, ytd = st.columns(3)
 
 with ttm:
-    ttm.header('* TTM Income')
-    ttm.text('(TTM = trailing twelve months)')
-    fig = px.bar(ttmi_graph, x='months', y='amount', title='TTM Income', color='months', text_auto=True)
-    fig.update_layout(width=400,height=400, showlegend=False)    
-    st.write(fig)
+    st.markdown('## TTM Income')
+    st.markdown('(TTM = trailing 12 months)')
+    plost.bar_chart(
+        ttmi_graph,
+        bar ='months',
+        value ='amount',
+        color='months',
+        pan_zoom='minimap',
+    )
+    #fig = px.bar(ttmi_graph, x='months', y='amount', title='TTM Income', color='months', text_auto=True)
+    #fig.update_layout(width=400,height=400, showlegend=False)    
+    #st.write(fig)
 
 with current_month:
     current_month.header('Current Month Income')
